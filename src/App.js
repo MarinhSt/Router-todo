@@ -1,8 +1,8 @@
 import React from 'react';
-import { TodoCounter } from './Components/TodoCounter';
-import { TodoSearch } from './Components/TodoSearch';
-import { TodoList } from './Components/TodoList';
-import { TodoItem } from './Components/TodoItem';
+import { TodoCounter } from './Components/TodoCounter/TodoCounter';
+import { TodoSearch } from './Components/TodoSearch/TodoSearch';
+import { TodoList } from './Components/TodoList/TodoList';
+import { TodoItem } from './Components/TodoItem/TodoItem';
 // import './App.css';
 
 const todos = [
@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <header>
-        <h1>This are yours tasks</h1>
+        <h1 className='title'>This are yours tasks</h1>
       </header>
       <TodoCounter />
       <TodoSearch />
