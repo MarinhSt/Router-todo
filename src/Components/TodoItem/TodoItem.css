@@ -1,0 +1,32 @@
+.item {
+  background-color: #eeeeee;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  /* min-width: 200px;
+  max-width: 600px; */
+  width: 400px;
+  /* width: max-content; */
+  /* width: 100%; */
+  /* flex-grow: 1; */
+  /* box-shadow: 0px 5px 50px
+    rgba(32, 35, 41, 0.15); */
+}
+.item-p {
+  margin: 20px;
+  flex-grow: 1;
+}
+.icon {
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.icon-check {
+  color: green;
+}
+
+.icon-delete:hover {
+  color: red;
+}
