@@ -3,10 +3,14 @@ import "./TodoItem.css";
 
 function TodoItem(props) {
     return (
-        <li className="item">
-            <span className="icon icon-check">/</span>
+        <li className={`item ${props.complete && 'item-check--active'}`}>
+            <span className={`icon icon-check ${props.complete && 'icon-check--active'} `}>
+                /
+            </span>
             <p className="item-p">{props.text}</p>
-            <span className="icon icon-delete">X</span>
+            <span className="icon icon-delete">
+                X
+            </span>
         </li>
     );
 }
