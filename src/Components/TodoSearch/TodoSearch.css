@@ -1,7 +1,11 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
 .search {
   font-size: 20px;
-  display: block;
-  margin: auto;
+  /* display: block; */
+  /* margin: auto; */
   padding: 0.8rem 1.6rem;
   background-color: inherit;
   /* border-radius: 0.3rem; */
@@ -19,3 +23,11 @@
 /* .search::placeholder {
   color: slategray;
 } */
+
+.deleteSearch {
+  cursor: pointer;
+  padding: 5px;
+  position: relative;
+  align-self: center;
+  right: 20px;
+}
