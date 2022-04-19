@@ -12,20 +12,36 @@ import { TodoItem } from '../TodoItem/TodoItem';
 //   { text: 'change lIghts', status: false },
 // ]
 
-function App() {
-
+function useLocalStorage(itemName, initialValue) {
   // local storage was used as the database for the persistance the data
-  const localTodos = localStorage.getItem('TODOS_LOCAL')
-  let parsedTodos
-  if (!localStorage.getItem('TODOS_LOCAL')) {
-    localStorage.setItem('TODOS_LOCAL', JSON.stringify([]))
-    parsedTodos = []
+  const localItem = localStorage.getItem(itemName)
+  let parsedItem
+
+  // verification the existence of item in local storage
+  if (!localStorage.getItem('itemName')) {
+    localStorage.setItem('itemName', JSON.stringify(initialValue))
+    parsedItem = initialValue
   } else {
-    parsedTodos = JSON.parse(localTodos)
+    parsedItem = JSON.parse(localItem)
   }
 
-  //state of to-dos and input search value
-  const [todos, setTodos] = React.useState(parsedTodos)
+  //state of to-dos
+  const [item, setItem] = React.useState(parsedItem)
+
+  // save change of components in local storage
+  const saveItem = (newItem) => {
+    localStorage.setItem('itemName', JSON.stringify(newItem))
+    setItem(newItem)
+  }
+
+  return [item, setItem]
+}
+
+function App() {
+  // hook useLocalStorage
+  const [todos, saveTodos] = useLocalStorage('TODOS_LOCAL', [])
+
+  //state of  input search value
   const [searchValue, setSearchValue] = React.useState('')
 
   //variables to know the status of to-dos
@@ -35,13 +51,7 @@ function App() {
   // according to the value of input search filters the to-dos.
   let showTodos = todos.filter(todo => todo.text.toLowerCase().includes(searchValue))
 
-
-  // save change of components in local storage
-  const saveTodos = (newTodos) => {
-    localStorage.setItem('TODOS_LOCAL', JSON.stringify(newTodos))
-    setTodos(newTodos)
-  }
-
+  // state change functions of to-dos
   const completeTodo = (text) => {
     const index = todos.findIndex(todo => todo.text === text)
     const newTodos = [...todos]
