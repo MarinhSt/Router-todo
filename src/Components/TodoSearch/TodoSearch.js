@@ -9,13 +9,13 @@ function TodoSearch({ searchValue, setSearchValue }) {
     const onEnterUp = (e) => {
         // (key === "Enter") ? console.log('buscar todos') : console.log('');
         // console.log(input.target.value)
-        if (e.target.value != "" && e.key === "Enter") {
+        if (e.target.value !== "" && e.key === "Enter") {
             let normalizeValue = e.target.value.toLowerCase().trim()
             // normalizeValue.toLowerCase().trim()
             setSearchValue(normalizeValue)
         }
     }
-    const inputSearch = document.getElementsByClassName('search')
+    // const inputSearch = document.getElementsByClassName('search')
 
     /* this function is for show all to-dos when the input is empty after doing a search   */
     const clearSearch = () => {

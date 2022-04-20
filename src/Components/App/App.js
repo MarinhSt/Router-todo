@@ -13,33 +13,60 @@ import { TodoItem } from '../TodoItem/TodoItem';
 // ]
 
 function useLocalStorage(itemName, initialValue) {
-  // local storage was used as the database for the persistance the data
-  const localItem = localStorage.getItem(itemName)
-  let parsedItem
 
-  // verification the existence of item in local storage
-  if (!localStorage.getItem('itemName')) {
-    localStorage.setItem('itemName', JSON.stringify(initialValue))
-    parsedItem = initialValue
-  } else {
-    parsedItem = JSON.parse(localItem)
-  }
-
+  //state of error on page
+  const [error, setError] = React.useState(false)
+  //state of load page
+  const [loading, setLoading] = React.useState(true)
   //state of to-dos
-  const [item, setItem] = React.useState(parsedItem)
+  const [item, setItem] = React.useState(initialValue)
+
+
+  React.useEffect(() => {
+    // setTimeout used to simulate the request to API
+    setTimeout(() => {
+      try {
+
+        // local storage was used as the database for the persistance the data
+        const localItem = localStorage.getItem(itemName)
+        let parsedItem
+
+        // verification the existence of item in local storage
+        if (!localStorage.getItem('itemName')) {
+          localStorage.setItem('itemName', JSON.stringify(initialValue))
+          parsedItem = initialValue
+        } else {
+          parsedItem = JSON.parse(localItem)
+        }
+
+        setItem(parsedItem)
+        setLoading(false)
+
+      } catch (error) {
+        setError(error)
+      }
+
+    }, 1000);
+    /* if I leave this empty, when I like to modify (complete or delete) to-dos; them will be reappear again  */
+    // review this, have a problems to change to-dos; don't update changes into localStorage.
+  }, [])
 
   // save change of components in local storage
   const saveItem = (newItem) => {
-    localStorage.setItem('itemName', JSON.stringify(newItem))
-    setItem(newItem)
+    try {
+      localStorage.setItem('itemName', JSON.stringify(newItem))
+      setItem(newItem)
+    } catch (error) {
+      setError(error)
+    }
   }
 
-  return [item, setItem]
+  return { item, saveItem, loading, error }
 }
 
 function App() {
   // hook useLocalStorage
-  const [todos, saveTodos] = useLocalStorage('TODOS_LOCAL', [])
+  const { item: todos, saveItem: saveTodos, loading, error } = useLocalStorage('TODOS_LOCAL', [])
 
   //state of  input search value
   const [searchValue, setSearchValue] = React.useState('')
@@ -82,6 +109,12 @@ function App() {
         setSearchValue={setSearchValue}
       />
       <TodoList>
+
+        {/* state to make know to user status of the page. */}
+        {error && 'Error to load data'}
+        {loading && 'Loading data...'}
+        {(!loading && !totalTodos) && 'Organize your time. Place your tasks...'}
+
         {showTodos.map(todo => (
           <TodoItem
             key={todo.text}
