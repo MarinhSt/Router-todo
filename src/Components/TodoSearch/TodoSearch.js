@@ -1,15 +1,17 @@
-import React from "react";
-import "./TodoSearch.css";
+import React from 'react'
+import { TodoContext } from '../TodoContext/TodoContext'
+import './TodoSearch.css'
 
-function TodoSearch({ searchValue, setSearchValue }) {
+function TodoSearch() {
+    const { searchValue, setSearchValue } = React.useContext(TodoContext)
     // const changeValue = (e) => {
     //     console.log(e)
     //     setSearchValue(e.target.value)
     // }
-    const onEnterUp = (e) => {
+    const onEnterUp = e => {
         // (key === "Enter") ? console.log('buscar todos') : console.log('');
         // console.log(input.target.value)
-        if (e.target.value !== "" && e.key === "Enter") {
+        if (e.target.value !== '' && e.key === 'Enter') {
             let normalizeValue = e.target.value.toLowerCase().trim()
             // normalizeValue.toLowerCase().trim()
             setSearchValue(normalizeValue)
@@ -35,9 +37,11 @@ function TodoSearch({ searchValue, setSearchValue }) {
                 defaultValue={searchValue}
                 onKeyUp={onEnterUp}
             />
-            <span className="deleteSearch" onClick={clearSearch} >X</span>
+            <span className="deleteSearch" onClick={clearSearch}>
+                X
+            </span>
         </div>
-    );
+    )
 }
 
 export { TodoSearch }
