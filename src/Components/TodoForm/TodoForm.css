@@ -1,0 +1,38 @@
+.containerModal{
+    background-color:#d4d4d4;
+    border-radius: 5px;
+    width: 400px;
+    height: 220px;
+    padding: 25px;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+/* .modal-title{
+    font-size:larger;       
+} */
+.modal-textarea{
+    border-radius: 5px;
+    flex-grow: 1;
+    padding: 20px;
+    resize: none;
+}
+.buttonContainer{
+    height: 50px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.buttonContainer button{
+    border-radius: 5px;
+    border: none;
+    width: 120px;
+}
+.buttonContainer button:last-child{
+    /* background-color: #2da12d; */
+    background-color: #3eb13e;
+}
