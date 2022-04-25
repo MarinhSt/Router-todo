@@ -20,3 +20,22 @@ body {
 .title {
   text-align: center;
 }
+
+.button-modal{
+  z-index: 100;
+  background-color: #3eb13e;
+  font-size: 35px;
+  border-radius: 50%;
+  position: fixed;
+  border: none;
+  right: 20px;
+  bottom: 20px;
+  height: 50px;
+  width: 50px;
+}
+.close-modal{
+  transform: rotate(45deg);
+}
+ button{
+   cursor: pointer;
+ }

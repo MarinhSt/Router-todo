@@ -4,6 +4,8 @@ import { TodoSearch } from '../TodoSearch/TodoSearch'
 import { TodoList } from '../TodoList/TodoList'
 import { TodoItem } from '../TodoItem/TodoItem'
 import { TodoContext } from '../TodoContext/TodoContext'
+import { Modal } from '../Modal/Modal'
+import { TodoForm } from '../TodoForm/TodoForm'
 
 // const defaultTodos = [
 //   { text: 'say hey', status: true, },
@@ -14,8 +16,16 @@ import { TodoContext } from '../TodoContext/TodoContext'
 // ]
 
 function AppUI() {
-    const { error, loading, totalTodos, showTodos, completeTodo, deleteTodo } =
-        React.useContext(TodoContext)
+    const {
+        error,
+        loading,
+        totalTodos,
+        showTodos,
+        completeTodo,
+        deleteTodo,
+        openModal,
+        deployModal,
+    } = React.useContext(TodoContext)
     return (
         <>
             <header>
@@ -33,14 +43,25 @@ function AppUI() {
 
                 {showTodos.map(todo => (
                     <TodoItem
-                        key={todo.text}
+                        key={todo.date}
                         text={todo.text}
                         completed={todo.status}
-                        onComplete={() => completeTodo(todo.text)}
-                        onDelete={() => deleteTodo(todo.text)}
+                        onComplete={() => completeTodo(todo.date)}
+                        onDelete={() => deleteTodo(todo.date)}
                     />
                 ))}
             </TodoList>
+            {!!openModal && (
+                <Modal>
+                    <TodoForm />
+                </Modal>
+            )}
+            <button
+                className={`button-modal ${!!openModal && 'close-modal'}`}
+                onClick={deployModal}
+            >
+                +
+            </button>
         </>
     )
 }
