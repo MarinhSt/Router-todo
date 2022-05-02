@@ -1,4 +1,5 @@
 import React from 'react'
+import { TodoHeader } from '../TodoHeader/TodoHeader'
 import { TodoCounter } from '../TodoCounter/TodoCounter'
 import { TodoSearch } from '../TodoSearch/TodoSearch'
 import { TodoList } from '../TodoList/TodoList'
@@ -25,14 +26,24 @@ function AppUI() {
         deleteTodo,
         openModal,
         deployModal,
+        completedTodos,
+        searchValue,
+        setSearchValue,
     } = React.useContext(TodoContext)
     return (
         <>
-            <header>
+            <TodoHeader>
                 <h1 className="title">This are yours tasks</h1>
-            </header>
-            <TodoCounter />
-            <TodoSearch />
+                <TodoCounter
+                    totalTodos={totalTodos}
+                    completedTodos={completedTodos}
+                />
+                <TodoSearch
+                    searchValue={searchValue}
+                    setSearchValue={setSearchValue}
+                />
+            </TodoHeader>
+
             <TodoList>
                 {/* state to make know to user status of the page. */}
                 {error && 'Error to load data'}
