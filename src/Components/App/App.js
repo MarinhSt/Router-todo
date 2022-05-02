@@ -4,7 +4,7 @@ import { TodoCounter } from '../TodoCounter/TodoCounter'
 import { TodoSearch } from '../TodoSearch/TodoSearch'
 import { TodoList } from '../TodoList/TodoList'
 import { TodoItem } from '../TodoItem/TodoItem'
-import { TodoContext } from '../TodoContext/TodoContext'
+import { useStateTodos } from './useStateTodos'
 import { Modal } from '../Modal/Modal'
 import { TodoForm } from '../TodoForm/TodoForm'
 
@@ -16,7 +16,7 @@ import { TodoForm } from '../TodoForm/TodoForm'
 //   { text: 'change lIghts', status: false },
 // ]
 
-function AppUI() {
+function App() {
     const {
         error,
         loading,
@@ -29,7 +29,8 @@ function AppUI() {
         completedTodos,
         searchValue,
         setSearchValue,
-    } = React.useContext(TodoContext)
+        createTodo,
+    } = useStateTodos()
     return (
         <>
             <TodoHeader>
@@ -64,7 +65,10 @@ function AppUI() {
             </TodoList>
             {!!openModal && (
                 <Modal>
-                    <TodoForm />
+                    <TodoForm
+                        deployModal={deployModal}
+                        createTodo={createTodo}
+                    />
                 </Modal>
             )}
             <button
@@ -77,4 +81,4 @@ function AppUI() {
     )
 }
 
-export default AppUI
+export default App

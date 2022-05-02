@@ -1,9 +1,7 @@
 import React from 'react'
-import { TodoContext } from '../TodoContext/TodoContext'
 import './TodoForm.css'
 
-function TodoForm() {
-    const { deployModal, createTodo } = React.useContext(TodoContext)
+function TodoForm({ deployModal, createTodo }) {
     return (
         <form onSubmit={createTodo} className="containerModal">
             {/* <h4 className="modal-title">writhe the task</h4> */}
