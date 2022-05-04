@@ -7,6 +7,9 @@ import { TodoItem } from '../TodoItem/TodoItem'
 import { useStateTodos } from './useStateTodos'
 import { Modal } from '../Modal/Modal'
 import { TodoForm } from '../TodoForm/TodoForm'
+import { TodoError } from '../TodoError/TodoError'
+import { TodoLoading } from '../TodoLoading/TodoLoading'
+import { EmptyTodo } from '../EmptyTodo/EmptyTodo'
 
 // const defaultTodos = [
 //   { text: 'say hey', status: true, },
@@ -45,8 +48,27 @@ function App() {
                 />
             </TodoHeader>
 
-            <TodoList>
-                {/* state to make know to user status of the page. */}
+            <TodoList
+                error={error}
+                loading={loading}
+                totalTodos={totalTodos}
+                showTodos={showTodos}
+                TodoError={() => <TodoError />}
+                TodoLoading={() => <TodoLoading />}
+                EmptyTodo={() => <EmptyTodo />}
+                render={todo => (
+                    <TodoItem
+                        key={todo.date}
+                        text={todo.text}
+                        completed={todo.status}
+                        onComplete={() => completeTodo(todo.date)}
+                        onDelete={() => deleteTodo(todo.date)}
+                    />
+                )}
+            />
+
+            {/* <TodoList>
+                state to make know to user status of the page.
                 {error && 'Error to load data'}
                 {loading && 'Loading data...'}
                 {!loading &&
@@ -62,7 +84,8 @@ function App() {
                         onDelete={() => deleteTodo(todo.date)}
                     />
                 ))}
-            </TodoList>
+            </TodoList> */}
+
             {!!openModal && (
                 <Modal>
                     <TodoForm
