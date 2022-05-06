@@ -20,6 +20,9 @@
 .search:hover {
   border-bottom: 0.1rem solid #0849d6;
 }
+.search:disabled{
+  opacity: 25%;
+}
 /* .search::placeholder {
   color: slategray;
 } */

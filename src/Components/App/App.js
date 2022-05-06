@@ -36,7 +36,7 @@ function App() {
     } = useStateTodos()
     return (
         <>
-            <TodoHeader>
+            <TodoHeader loading={loading}>
                 <h1 className="title">This are yours tasks</h1>
                 <TodoCounter
                     totalTodos={totalTodos}

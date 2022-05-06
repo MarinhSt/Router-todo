@@ -1,7 +1,7 @@
 import React from 'react'
 import './TodoSearch.css'
 
-function TodoSearch({ searchValue, setSearchValue }) {
+function TodoSearch({ searchValue, setSearchValue, loading }) {
     // const changeValue = (e) => {
     //     console.log(e)
     //     setSearchValue(e.target.value)
@@ -34,6 +34,7 @@ function TodoSearch({ searchValue, setSearchValue }) {
                 // onChange={changeValue}
                 defaultValue={searchValue}
                 onKeyUp={onEnterUp}
+                disabled={loading}
             />
             <span className="deleteSearch" onClick={clearSearch}>
                 X
