@@ -53,9 +53,11 @@ function App() {
                 loading={loading}
                 totalTodos={totalTodos}
                 showTodos={showTodos}
+                searchValue={searchValue}
                 TodoError={() => <TodoError />}
                 TodoLoading={() => <TodoLoading />}
                 EmptyTodo={() => <EmptyTodo />}
+                EmptyResults={search => <p>don't find results for {search}</p>}
                 render={todo => (
                     <TodoItem
                         key={todo.date}
