@@ -10,6 +10,7 @@ import { TodoForm } from '../../components/TodoForm/TodoForm'
 import { TodoError } from '../../components/TodoError/TodoError'
 import { TodoLoading } from '../../components/TodoLoading/TodoLoading'
 import { EmptyTodo } from '../../components/EmptyTodo/EmptyTodo'
+import { NavLink } from 'react-router-dom'
 
 // const defaultTodos = [
 //   { text: 'say hey', status: true, },
@@ -98,9 +99,14 @@ function HomePage() {
             )}
             <button
                 className={`button-modal ${!!openModal && 'close-modal'}`}
-                onClick={deployModal}
+                // onClick={deployModal}
             >
-                +
+                <NavLink
+                    to="/create"
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                >
+                    +
+                </NavLink>
             </button>
         </>
     )

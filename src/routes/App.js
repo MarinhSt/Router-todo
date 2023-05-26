@@ -1,12 +1,16 @@
 import React from 'react'
-import { HashRouter } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import { HomePage } from './home/HomePage'
+import { CreateTodoPage } from './create/CreateTodoPage'
 
 function App() {
     return (
         <>
             <HashRouter>
-                <HomePage></HomePage>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/create" element={<CreateTodoPage />} />
+                </Routes>
             </HashRouter>
         </>
     )

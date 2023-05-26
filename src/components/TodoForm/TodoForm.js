@@ -1,5 +1,6 @@
 import React from 'react'
 import './TodoForm.css'
+import { NavLink } from 'react-router-dom'
 
 function TodoForm({ deployModal, createTodo }) {
     return (
@@ -12,9 +13,21 @@ function TodoForm({ deployModal, createTodo }) {
             />
             <div className="buttonContainer">
                 <button type="button" onClick={deployModal}>
-                    cancel
+                    <NavLink
+                        to="/"
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
+                        cancel
+                    </NavLink>
                 </button>
-                <button type="submit">create</button>
+                <button type="submit">
+                    <NavLink
+                        to="/"
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
+                        create
+                    </NavLink>
+                </button>
             </div>
         </form>
     )
