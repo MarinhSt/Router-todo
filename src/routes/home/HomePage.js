@@ -1,15 +1,15 @@
 import React from 'react'
-import { TodoHeader } from '../TodoHeader/TodoHeader'
-import { TodoCounter } from '../TodoCounter/TodoCounter'
-import { TodoSearch } from '../TodoSearch/TodoSearch'
-import { TodoList } from '../TodoList/TodoList'
-import { TodoItem } from '../TodoItem/TodoItem'
-import { useStateTodos } from './useStateTodos'
-import { Modal } from '../Modal/Modal'
-import { TodoForm } from '../TodoForm/TodoForm'
-import { TodoError } from '../TodoError/TodoError'
-import { TodoLoading } from '../TodoLoading/TodoLoading'
-import { EmptyTodo } from '../EmptyTodo/EmptyTodo'
+import { TodoHeader } from '../../components/TodoHeader/TodoHeader'
+import { TodoCounter } from '../../components/TodoCounter/TodoCounter'
+import { TodoSearch } from '../../components/TodoSearch/TodoSearch'
+import { TodoList } from '../../components/TodoList/TodoList'
+import { TodoItem } from '../../components/TodoItem/TodoItem'
+import { useStateTodos } from '../../hooks/useStateTodos'
+import { Modal } from '../../components/Modal/Modal'
+import { TodoForm } from '../../components/TodoForm/TodoForm'
+import { TodoError } from '../../components/TodoError/TodoError'
+import { TodoLoading } from '../../components/TodoLoading/TodoLoading'
+import { EmptyTodo } from '../../components/EmptyTodo/EmptyTodo'
 
 // const defaultTodos = [
 //   { text: 'say hey', status: true, },
@@ -19,7 +19,7 @@ import { EmptyTodo } from '../EmptyTodo/EmptyTodo'
 //   { text: 'change lIghts', status: false },
 // ]
 
-function App() {
+function HomePage() {
     const {
         error,
         loading,
@@ -106,4 +106,4 @@ function App() {
     )
 }
 
-export default App
+export { HomePage }
