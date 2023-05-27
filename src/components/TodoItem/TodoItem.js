@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './TodoItem.css'
 
 function TodoItem(props) {
@@ -12,6 +13,14 @@ function TodoItem(props) {
                 /
             </span>
             <p className="item-p">{props.text}</p>
+            <NavLink
+                to="/edit"
+                style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+                <span className="icon icon-edit" onClick={props.onDelete}>
+                    ✍
+                </span>
+            </NavLink>
             <span className="icon icon-delete" onClick={props.onDelete}>
                 X
             </span>

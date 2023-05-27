@@ -4,7 +4,13 @@ import { useStateTodos } from '../../hooks/useStateTodos'
 
 function CreateTodoPage(params) {
     const { deployModal, createTodo } = useStateTodos()
-    return <TodoForm deployModal={deployModal} createTodo={createTodo} />
+    return (
+        <TodoForm
+            deployModal={deployModal}
+            createTodo={createTodo}
+            Action={'Create'}
+        />
+    )
 }
 
 export { CreateTodoPage }

@@ -2,7 +2,7 @@ import React from 'react'
 import './TodoForm.css'
 import { NavLink } from 'react-router-dom'
 
-function TodoForm({ deployModal, createTodo }) {
+function TodoForm({ deployModal, createTodo, Action }) {
     return (
         <form onSubmit={createTodo} className="containerModal">
             {/* <h4 className="modal-title">writhe the task</h4> */}
@@ -25,7 +25,7 @@ function TodoForm({ deployModal, createTodo }) {
                         to="/"
                         style={{ textDecoration: 'none', color: 'inherit' }}
                     >
-                        create
+                        {Action}
                     </NavLink>
                 </button>
             </div>
