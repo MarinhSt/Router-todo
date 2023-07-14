@@ -5,12 +5,11 @@ import { TodoSearch } from '../../components/TodoSearch/TodoSearch'
 import { TodoList } from '../../components/TodoList/TodoList'
 import { TodoItem } from '../../components/TodoItem/TodoItem'
 import { useStateTodos } from '../../hooks/useStateTodos'
-import { Modal } from '../../components/Modal/Modal'
-import { TodoForm } from '../../components/TodoForm/TodoForm'
 import { TodoError } from '../../components/TodoError/TodoError'
 import { TodoLoading } from '../../components/TodoLoading/TodoLoading'
 import { EmptyTodo } from '../../components/EmptyTodo/EmptyTodo'
-import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { CreateTodoButton } from '../../components/CreateTodoButton/CreateTodoButton'
 
 // const defaultTodos = [
 //   { text: 'say hey', status: true, },
@@ -21,6 +20,7 @@ import { NavLink } from 'react-router-dom'
 // ]
 
 function HomePage() {
+    const navigate = useNavigate()
     const {
         error,
         loading,
@@ -28,12 +28,9 @@ function HomePage() {
         showTodos,
         completeTodo,
         deleteTodo,
-        openModal,
-        deployModal,
         completedTodos,
         searchValue,
         setSearchValue,
-        createTodo,
     } = useStateTodos()
     return (
         <>
@@ -66,48 +63,12 @@ function HomePage() {
                         completed={todo.status}
                         onComplete={() => completeTodo(todo.date)}
                         onDelete={() => deleteTodo(todo.date)}
+                        onEdit={() => navigate('/edit/' + todo.date)}
                     />
                 )}
             />
 
-            {/* <TodoList>
-                state to make know to user status of the page.
-                {error && 'Error to load data'}
-                {loading && 'Loading data...'}
-                {!loading &&
-                    !totalTodos &&
-                    'Organize your time. Place your tasks...'}
-
-                {showTodos.map(todo => (
-                    <TodoItem
-                        key={todo.date}
-                        text={todo.text}
-                        completed={todo.status}
-                        onComplete={() => completeTodo(todo.date)}
-                        onDelete={() => deleteTodo(todo.date)}
-                    />
-                ))}
-            </TodoList> */}
-
-            {!!openModal && (
-                <Modal>
-                    <TodoForm
-                        deployModal={deployModal}
-                        createTodo={createTodo}
-                    />
-                </Modal>
-            )}
-            <button
-                className={`button-modal ${!!openModal && 'close-modal'}`}
-                // onClick={deployModal}
-            >
-                <NavLink
-                    to="/create"
-                    style={{ textDecoration: 'none', color: 'inherit' }}
-                >
-                    +
-                </NavLink>
-            </button>
+            <CreateTodoButton />
         </>
     )
 }

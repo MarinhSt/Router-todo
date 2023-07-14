@@ -2,7 +2,7 @@
     background-color:#d4d4d4;
     border-radius: 5px;
     width: 400px;
-    height: 220px;
+    height: 320px;
     padding: 25px;
     align-self: center;
     display: flex;
@@ -11,16 +11,24 @@
     text-align: center;
 
 }
+h2{
+    /* justify-content: center; */
+/* align-items: center; */
+align-self: center;
+}
 
-/* .modal-title{
+.modal-title{
     font-size:larger;       
-} */
+}
 .modal-textarea{
     border-radius: 5px;
     flex-grow: 1;
     padding: 20px;
     resize: none;
+    height: 100px;
+    text-align: center;
 }
+
 .buttonContainer{
     height: 50px;
     margin-top: 25px;
@@ -35,4 +43,12 @@
 .buttonContainer button:last-child{
     /* background-color: #2da12d; */
     background-color: #3eb13e;
+}
+
+.containerForm{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
 }

@@ -1,0 +1,20 @@
+.create-todo-button{
+    z-index: 100;
+    background-color: #3eb13e;
+    font-size: 35px;
+    border-radius: 50%;
+    position: fixed;
+    border: none;
+    right: 20px;
+    bottom: 20px;
+    height: 50px;
+    width: 50px;
+  }
+  .create-todo-button:hover{
+    /* transform: rotate(45deg); */
+    transform: scale(1.05);
+  }
+   button{
+     cursor: pointer;
+     text-decoration: none;
+   }

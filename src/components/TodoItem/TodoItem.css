@@ -1,3 +1,7 @@
+svg{
+  width: 20px;
+  height: 25px;
+}
 .item {
   background-color: #eeeeee;
   position: relative;
@@ -35,6 +39,6 @@
 .icon-delete:hover {
   color: red;
 }
-.icon-edit:hover {
+.icon-edit svg:hover {
   color: blue;
 }

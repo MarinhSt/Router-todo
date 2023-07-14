@@ -13,9 +13,6 @@ function useStateTodos() {
     //state of  input search value
     const [searchValue, setSearchValue] = React.useState('')
 
-    //state of modal
-    const [openModal, setOpenModal] = React.useState(false)
-
     //variables to know the status of to-dos
     const completedTodos = todos.filter(todo => todo.status).length
     const totalTodos = todos.length
@@ -26,14 +23,14 @@ function useStateTodos() {
     )
 
     // state change functions of to-dos
-    const createTodo = e => {
+    const createTodo = (id, e) => {
         // this method cancels the action of reloading the page when form is submitted
-        e.preventDefault()
+        // e.preventDefault()
 
         const newTodo = { date: '', text: '', status: false }
 
         // captures the value of the textArea
-        const value = e.target[0].value
+        const value = e
         newTodo.text = value
 
         // adds todo creation date
@@ -43,7 +40,6 @@ function useStateTodos() {
         newTodos.push(newTodo)
         console.log(newTodos)
         saveTodos(newTodos)
-        setOpenModal(false)
     }
 
     const completeTodo = date => {
@@ -63,14 +59,20 @@ function useStateTodos() {
         newTodos.splice(index, 1)
         saveTodos(newTodos)
     }
-
-    const deployModal = e => {
-        // e.target.classList.toggle('close-modal')
-        !openModal ? setOpenModal(true) : setOpenModal(false)
-        // other way to change state of openModal
-        // assign the openModal negation as the new state
-        // setOpenModal(openModal=>!openModal)
+    const editTodo = (date, e) => {
+        const index = todos.findIndex(todo => todo.date === date)
+        const changedTodos = [...todos]
+        const newText = e
+        changedTodos[index].text = newText
+        saveTodos(changedTodos)
     }
+
+    const showTodoToEdit = id => {
+        const index = todos.findIndex(todo => todo.date === id)
+
+        return todos[index].text
+    }
+
     return {
         totalTodos,
         completedTodos,
@@ -82,8 +84,8 @@ function useStateTodos() {
         completeTodo,
         deleteTodo,
         createTodo,
-        openModal,
-        deployModal,
+        editTodo,
+        showTodoToEdit,
     }
 }
 
